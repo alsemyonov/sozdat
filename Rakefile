@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "sozdat"
-    gem.summary = %Q{Rails IDE from Tokak Studio}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Rails IDE}
+    gem.description = %Q{Rails IDE from Tokak Studio}
     gem.email = "rotuka@tokak.ru"
     gem.homepage = "http://github.com/rotuka/sozdat"
     gem.authors = ["Alexander Semyonov"]
