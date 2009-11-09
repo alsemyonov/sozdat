@@ -51,3 +51,14 @@ rescue LoadError
     abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
   end
 end
+
+
+task :environment do
+  require "#{File.dirname(__FILE__)}/config/environment"
+end
+
+desc "Migrate DB"
+task :migrate => :environment do
+  App.connect_db
+  ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
+end

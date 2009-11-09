@@ -18,4 +18,9 @@ coverage
 rdoc
 pkg
 
+## Gem bundler
+vendor/gems
+!vendor/gems/cache
+
 ## PROJECT::SPECIFIC
+vendor/rgtk

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "#{File.dirname(__FILE__)}/../config/environment"
+
+exec "irb -r irb/completion -r #{Rgtk.root}/config/environment"
