@@ -1,16 +1,20 @@
 class MainController < Rgtk::Controller
-  def on_quit_application
+  on :quit_application do
     close_all
     App.destroy
   end
 
-  def preferences
-    #TODO: show preferences
-  end
+  activate :create_project
+  activate :open_project
+  activate :save_project
+  activate :save_project_as
 
-  def about
-    #TODO: show about box
-  end
+  activate :browser_go_forward
+  activate :browser_go_back
+
+  activate :preferences
+  activate :about
+
 protected
   def close_all
     #TODO: close all open projects
