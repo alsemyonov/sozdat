@@ -67,3 +67,6 @@ task :migrate => :environment do
   App.connect_db
   ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
 end
+
+desc "Bump gem version, release and install"
+task :push => %w(version:bump:patch release gemcutter:release install)
