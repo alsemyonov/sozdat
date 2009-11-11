@@ -62,23 +62,28 @@ protected
   end
 
   changed :action do |radio, group|
-    if @project
-      current_perspective = group.current_value
-      case current_perspective
-      when Perspective::BROWSER
-        server.open(@project) unless @project.server_started?
-        browser.open(@project)
-      when Perspective::EDITOR
-        editor.open(@project)
-      when Perspective::TESTS
-        tests.open(@project)
-      when Perspective::SERVER
-        server.open(@project)
+    if radio == group
+      if @project
+        self.current_perspective = group.current_value
       else
-        p current_perspective
+        puts "No project is open"
       end
+    end
+  end
+
+  def current_perspective=(perspective)
+    case perspective
+    when Perspective::BROWSER
+      server.open(@project) unless @project.server_started?
+      browser.open(@project)
+    when Perspective::EDITOR
+      editor.open(@project)
+    when Perspective::TESTS
+      tests.open(@project)
+    when Perspective::SERVER
+      server.open(@project)
     else
-      puts "No project is open"
+      p perspective
     end
   end
 
@@ -91,7 +96,10 @@ protected
         :page_num => project_notebook.page_num(controller.container)
       }
     end
-    project_notebook.page = @tabs[kind][:page_num] if active
+    if active
+      self[:editor].current_value = Perspective.const_get(kind.upcase)
+      project_notebook.page = @tabs[kind][:page_num]
+    end
     @tabs[kind][:controller]
   end
 

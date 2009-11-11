@@ -12,6 +12,7 @@ begin
     gem.authors = ["Alexander Semyonov"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
+    gem.bindir = 'bin'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
