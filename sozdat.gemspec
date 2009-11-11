@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sozdat}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Semyonov"]
-  s.date = %q{2009-11-09}
-  s.description = %q{TODO: longer description of your gem}
+  s.date = %q{2009-11-11}
+  s.description = %q{Rails IDE from Tokak Studio}
   s.email = %q{rotuka@tokak.ru}
   s.executables = ["multiruby", "autotest", "multiruby_setup", "multigem", "zentest", "sozdat", "unit_diff"]
   s.extra_rdoc_files = [
@@ -25,13 +25,22 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "app/controllers/about_controller.rb",
+     "app/controllers/browser_controller.rb",
+     "app/controllers/editor_controller.rb",
      "app/controllers/main_controller.rb",
+     "app/controllers/server_controller.rb",
+     "app/controllers/tab_controller.rb",
+     "app/controllers/tests_controller.rb",
+     "app/controllers/vte_controller.rb",
      "app/media/background.png",
      "app/media/icon.png",
      "app/media/logo.png",
      "app/media/logo.svg",
      "app/models/project.rb",
+     "app/views/browser.ui",
      "app/views/main.ui",
+     "app/views/vte.ui",
      "bin/autotest",
      "bin/multigem",
      "bin/multiruby",
@@ -43,6 +52,8 @@ Gem::Specification.new do |s|
      "db/migrate/001_create_projects.rb",
      "lib/sozdat.rb",
      "script/console",
+     "script/run",
+     "sozdat.gemspec",
      "test/helper.rb",
      "test/test_sozdat.rb",
      "vendor/gems/cache/ZenTest-4.1.4.gem",
@@ -54,7 +65,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Rails IDE from Tokak Studio}
+  s.summary = %q{Rails IDE}
   s.test_files = [
     "test/helper.rb",
      "test/test_sozdat.rb"
@@ -65,15 +76,27 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
+      s.add_runtime_dependency(%q<activesupport>, ["= 2.3.4"])
+      s.add_runtime_dependency(%q<activerecord>, ["= 2.3.4"])
+      s.add_runtime_dependency(%q<ZenTest>, ["= 4.1.4"])
+      s.add_runtime_dependency(%q<autotest-rails>, ["= 4.1.0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
+      s.add_dependency(%q<activesupport>, ["= 2.3.4"])
+      s.add_dependency(%q<activerecord>, ["= 2.3.4"])
+      s.add_dependency(%q<ZenTest>, ["= 4.1.4"])
+      s.add_dependency(%q<autotest-rails>, ["= 4.1.0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
+    s.add_dependency(%q<activesupport>, ["= 2.3.4"])
+    s.add_dependency(%q<activerecord>, ["= 2.3.4"])
+    s.add_dependency(%q<ZenTest>, ["= 4.1.4"])
+    s.add_dependency(%q<autotest-rails>, ["= 4.1.0"])
   end
 end
 
