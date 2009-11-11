@@ -5,14 +5,15 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sozdat}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alexander Semyonov"]
   s.date = %q{2009-11-11}
+  s.default_executable = %q{sozdat}
   s.description = %q{Rails IDE from Tokak Studio}
   s.email = %q{rotuka@tokak.ru}
-  s.executables = ["multiruby", "autotest", "multiruby_setup", "multigem", "zentest", "sozdat", "unit_diff"]
+  s.executables = ["sozdat"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -20,7 +21,6 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
-     "Gemfile",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -41,13 +41,7 @@ Gem::Specification.new do |s|
      "app/views/browser.ui",
      "app/views/main.ui",
      "app/views/vte.ui",
-     "bin/autotest",
-     "bin/multigem",
-     "bin/multiruby",
-     "bin/multiruby_setup",
      "bin/sozdat",
-     "bin/unit_diff",
-     "bin/zentest",
      "config/environment.rb",
      "db/migrate/001_create_projects.rb",
      "lib/sozdat.rb",
@@ -55,11 +49,7 @@ Gem::Specification.new do |s|
      "script/run",
      "sozdat.gemspec",
      "test/helper.rb",
-     "test/test_sozdat.rb",
-     "vendor/gems/cache/ZenTest-4.1.4.gem",
-     "vendor/gems/cache/activerecord-2.3.4.gem",
-     "vendor/gems/cache/activesupport-2.3.4.gem",
-     "vendor/gems/cache/autotest-rails-4.1.0.gem"
+     "test/test_sozdat.rb"
   ]
   s.homepage = %q{http://github.com/krasivotokak/sozdat}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -82,6 +72,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<activerecord>, ["= 2.3.4"])
       s.add_runtime_dependency(%q<ZenTest>, ["= 4.1.4"])
       s.add_runtime_dependency(%q<autotest-rails>, ["= 4.1.0"])
+      s.add_runtime_dependency(%q<rgtk>, ["= 0.0.3"])
     else
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
@@ -89,6 +80,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<activerecord>, ["= 2.3.4"])
       s.add_dependency(%q<ZenTest>, ["= 4.1.4"])
       s.add_dependency(%q<autotest-rails>, ["= 4.1.0"])
+      s.add_dependency(%q<rgtk>, ["= 0.0.3"])
     end
   else
     s.add_dependency(%q<shoulda>, [">= 0"])
@@ -97,6 +89,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<activerecord>, ["= 2.3.4"])
     s.add_dependency(%q<ZenTest>, ["= 4.1.4"])
     s.add_dependency(%q<autotest-rails>, ["= 4.1.0"])
+    s.add_dependency(%q<rgtk>, ["= 0.0.3"])
   end
 end
 
