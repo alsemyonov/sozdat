@@ -18,6 +18,8 @@ begin
     gem.add_dependency 'autotest-rails', '4.1.0'
     gem.add_dependency 'rgtk', '0.0.3'
     gem.bindir = 'bin'
+    gem.requirements << 'ruby-gnome2'
+    gem.requirements << 'rbwebkitgtk'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
