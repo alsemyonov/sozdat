@@ -16,6 +16,7 @@ begin
     gem.add_dependency 'activerecord', '2.3.4'
     gem.add_dependency 'ZenTest', '4.1.4'
     gem.add_dependency 'autotest-rails', '4.1.0'
+    gem.add_dependency 'rgtk', '0.0.3'
     gem.bindir = 'bin'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
