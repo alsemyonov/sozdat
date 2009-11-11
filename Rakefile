@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{Rails IDE}
     gem.description = %Q{Rails IDE from Tokak Studio}
     gem.email = 'rotuka@tokak.ru'
-    gem.homepage = 'http://github.com/rotuka/sozdat'
+    gem.homepage = 'http://github.com/krasivotokak/sozdat'
     gem.authors = ['Alexander Semyonov']
     gem.add_development_dependency 'shoulda', '>= 0'
     gem.add_development_dependency 'yard', '>= 0'
