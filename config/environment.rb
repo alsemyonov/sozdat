@@ -3,6 +3,7 @@ require 'rubygems'
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 vendored_rgtk = File.join(File.dirname(__FILE__), '..', 'vendor', 'rgtk', 'lib')
 $LOAD_PATH.unshift(vendored_rgtk) if File.exists?(vendored_rgtk)
+
 require 'rgtk'
 require 'webkit'
 require 'vte'

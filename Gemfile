@@ -1,5 +1,0 @@
-#gem 'rgtk', :path => 'vendor/rgtk'
-gem 'activesupport'
-gem 'activerecord'
-gem 'ZenTest'
-gem 'autotest-rails'
