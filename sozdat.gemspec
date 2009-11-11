@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
      "vendor/gems/cache/activesupport-2.3.4.gem",
      "vendor/gems/cache/autotest-rails-4.1.0.gem"
   ]
-  s.homepage = %q{http://github.com/rotuka/sozdat}
+  s.homepage = %q{http://github.com/krasivotokak/sozdat}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
