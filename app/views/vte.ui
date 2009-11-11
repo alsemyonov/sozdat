@@ -1,0 +1,10 @@
+<interface>
+  <object class="GtkVBox" id="vte_container">
+    <property name="visible">True</property>
+    <child>
+      <object class="VteTerminal" id="vte_terminal">
+        <property name="visible">True</property>
+      </object>
+    </child>
+  </object>
+</interface>

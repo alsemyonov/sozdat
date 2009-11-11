@@ -3,12 +3,12 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <!-- interface-local-resource-path ../media -->
-  <object class="GtkWindow" id="main_window">
+  <object class="GtkWindow" id="main_container">
     <property name="width_request">640</property>
     <property name="height_request">480</property>
     <property name="title" translatable="yes">Sozdat</property>
     <property name="icon">../media/icon.png</property>
-    <signal name="destroy" handler="on_quit_application"/>
+    <signal name="destroy" handler="on_application_quit"/>
     <child>
       <object class="GtkVBox" id="main_window_vbox">
         <property name="visible">True</property>
@@ -26,8 +26,8 @@
                     <property name="visible">True</property>
                     <child>
                       <object class="GtkImageMenuItem" id="create_project_menuitem">
-                        <property name="related_action">create_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">create_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="n" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -35,24 +35,24 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="open_project_menuitem">
-                        <property name="related_action">open_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">open_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="save_project_menuitem">
-                        <property name="related_action">save_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">save_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="save_project_as_menuitem">
-                        <property name="related_action">save_project_as</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">save_project_as</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
@@ -65,8 +65,8 @@
                     <child>
                       <object class="GtkImageMenuItem" id="quit_application_menuitem">
                         <property name="visible">True</property>
-                        <property name="related_action">quit_application</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">quit_application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
@@ -126,7 +126,7 @@
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_preferences_activate"/>
+                        <signal name="activate" handler="on_preferences"/>
                       </object>
                     </child>
                   </object>
@@ -154,7 +154,7 @@
                         <property name="visible">True</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
-                        <signal name="activate" handler="on_about_activate"/>
+                        <signal name="activate" handler="on_about"/>
                       </object>
                     </child>
                   </object>
@@ -187,8 +187,10 @@
               <object class="GtkToolItem" id="project_selector_place">
                 <property name="visible">True</property>
                 <child>
-                  <object class="GtkComboBoxEntry" id="project_selector_combobox">
+                  <object class="GtkComboBox" id="project_selector_combobox">
+                    <property name="width_request">150</property>
                     <property name="visible">True</property>
+                    <signal name="changed" handler="on_project_selector_combobox_changed"/>
                   </object>
                 </child>
               </object>
@@ -200,8 +202,8 @@
             <child>
               <object class="GtkToolButton" id="save_project_button">
                 <property name="visible">True</property>
-                <property name="related_action">save_project</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">save_project</property>
                 <property name="label" translatable="yes">Save</property>
                 <property name="use_underline">True</property>
               </object>
@@ -220,11 +222,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="start_server_button">
+              <object class="GtkToggleToolButton" id="editor_button">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Server</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">editor</property>
                 <property name="use_underline">True</property>
-                <property name="stock_id">gtk-media-play</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -232,11 +234,12 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="browser_button">
+              <object class="GtkToggleToolButton" id="browser_button">
                 <property name="visible">True</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">browser</property>
                 <property name="label" translatable="yes">Browser</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">applications-internet</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -244,11 +247,25 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="autotest_button">
+              <object class="GtkToggleToolButton" id="autotest_button">
                 <property name="visible">True</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">autotest</property>
                 <property name="label" translatable="yes">Autotest</property>
                 <property name="use_underline">True</property>
-                <property name="icon_name">face-smile</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToggleToolButton" id="start_server_button">
+                <property name="visible">True</property>
+                <property name="use_action_appearance">True</property>
+                <property name="related_action">server</property>
+                <property name="label" translatable="yes">Server</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -265,177 +282,17 @@
           <object class="GtkNotebook" id="project_notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <child>
-              <object class="GtkLabel" id="label1">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">TODO: vte-based terminal with VIM within</property>
-              </object>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="project_tab_label">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Code</property>
-              </object>
-              <packing>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="browser_vbox">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkToolbar" id="browser_toolbar">
-                    <property name="visible">True</property>
-                    <child>
-                      <object class="GtkToolButton" id="browser_back_button">
-                        <property name="visible">True</property>
-                        <property name="related_action">browser_go_back</property>
-                        <property name="use_action_appearance">True</property>
-                        <property name="label" translatable="yes">toolbutton1</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolButton" id="browser_forward_button">
-                        <property name="visible">True</property>
-                        <property name="related_action">browser_go_forward</property>
-                        <property name="use_action_appearance">True</property>
-                        <property name="label" translatable="yes">toolbutton1</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolItem" id="browser_address_item">
-                        <property name="visible">True</property>
-                        <child>
-                          <object class="GtkEntry" id="browser_address_entry">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="invisible_char">&#x2022;</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToolButton" id="browser_reload_or_stop_button">
-                        <property name="visible">True</property>
-                        <property name="related_action">browser_stop_or_reload</property>
-                        <property name="use_action_appearance">True</property>
-                        <property name="label" translatable="yes">toolbutton2</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="homogeneous">True</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkScrolledWindow" id="browser_scrolledwindow">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkStatusbar" id="browser_statusbar">
-                    <property name="visible">True</property>
-                    <property name="spacing">2</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="browser_tab_label">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Browser</property>
-              </object>
-              <packing>
-                <property name="position">1</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label4">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">TODO: vte-based terminal with autotest within</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="test_tab_label">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Tests</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">TODO: vte-based terminal with script/server within</property>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="server_tab_label">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Server</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkStatusbar" id="statusbar1">
+          <object class="GtkStatusbar" id="main_statusbar">
             <property name="visible">True</property>
             <property name="spacing">2</property>
             <child>
-              <object class="GtkLabel" id="label2">
+              <object class="GtkLabel" id="main_browser_statusbar">
                 <property name="visible">True</property>
                 <property name="xalign">0</property>
                 <property name="xpad">5</property>
@@ -457,33 +314,50 @@
   </object>
   <object class="GtkAction" id="create_project">
     <property name="stock_id">gtk-new</property>
-    <signal name="activate" handler="on_create_project_activate"/>
+    <signal name="activate" handler="on_project_create_activate"/>
   </object>
   <object class="GtkAction" id="open_project">
     <property name="stock_id">gtk-open</property>
-    <signal name="activate" handler="on_open_project_activate"/>
+    <signal name="activate" handler="on_project_open_activate"/>
   </object>
   <object class="GtkAction" id="save_project">
     <property name="stock_id">gtk-save</property>
-    <signal name="activate" handler="on_save_project_activate"/>
+    <signal name="activate" handler="on_project_save_activate"/>
   </object>
   <object class="GtkAction" id="save_project_as">
     <property name="stock_id">gtk-save-as</property>
-    <signal name="activate" handler="on_save_project_as_activate"/>
+    <signal name="activate" handler="on_project_save_as_activate"/>
   </object>
   <object class="GtkAction" id="quit_application">
     <property name="stock_id">gtk-quit</property>
-    <signal name="activate" handler="on_quit_application"/>
+    <signal name="activate" handler="on_application_quit"/>
   </object>
-  <object class="GtkAction" id="browser_go_back">
-    <property name="stock_id">gtk-go-back</property>
-    <signal name="activate" handler="on_browser_go_back_activate"/>
+  <object class="GtkRadioAction" id="browser">
+    <property name="icon_name">applications-internet</property>
+    <property name="draw_as_radio">True</property>
+    <property name="value">1</property>
+    <property name="group">browser</property>
+    <signal name="changed" handler="on_action_changed"/>
   </object>
-  <object class="GtkAction" id="browser_go_forward">
-    <property name="stock_id">gtk-go-forward</property>
-    <signal name="activate" handler="on_browser_go_forward_activate"/>
+  <object class="GtkRadioAction" id="editor">
+    <property name="icon_name">accessories-text-editor</property>
+    <property name="draw_as_radio">True</property>
+    <property name="value">2</property>
+    <property name="group">browser</property>
+    <signal name="changed" handler="on_action_changed"/>
   </object>
-  <object class="GtkAction" id="browser_stop_or_reload">
-    <property name="stock_id">gtk-stop</property>
+  <object class="GtkRadioAction" id="autotest">
+    <property name="icon_name">dialog-information</property>
+    <property name="draw_as_radio">True</property>
+    <property name="value">3</property>
+    <property name="group">browser</property>
+    <signal name="changed" handler="on_action_changed"/>
+  </object>
+  <object class="GtkRadioAction" id="server">
+    <property name="icon_name">media-playback-start</property>
+    <property name="draw_as_radio">True</property>
+    <property name="value">4</property>
+    <property name="group">browser</property>
+    <signal name="changed" handler="on_action_changed"/>
   </object>
 </interface>
