@@ -7,7 +7,9 @@
     <property name="width_request">640</property>
     <property name="height_request">480</property>
     <property name="title" translatable="yes">Sozdat</property>
+    <property name="window_position">center</property>
     <property name="icon">../media/icon.png</property>
+    <property name="icon_name">accessories-text-editor</property>
     <signal name="destroy" handler="on_application_quit"/>
     <child>
       <object class="GtkVBox" id="main_window_vbox">
@@ -26,8 +28,8 @@
                     <property name="visible">True</property>
                     <child>
                       <object class="GtkImageMenuItem" id="create_project_menuitem">
-                        <property name="related_action">create_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">create_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                         <accelerator key="n" signal="activate" modifiers="GDK_CONTROL_MASK"/>
@@ -35,24 +37,24 @@
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="open_project_menuitem">
-                        <property name="related_action">open_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">open_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="save_project_menuitem">
-                        <property name="related_action">save_project</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">save_project</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="save_project_as_menuitem">
-                        <property name="related_action">save_project_as</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">save_project_as</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
@@ -65,8 +67,8 @@
                     <child>
                       <object class="GtkImageMenuItem" id="quit_application_menuitem">
                         <property name="visible">True</property>
-                        <property name="related_action">quit_application</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">quit_application</property>
                         <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
@@ -144,32 +146,36 @@
                     <child>
                       <object class="GtkImageMenuItem" id="view_editor">
                         <property name="visible">True</property>
-                        <property name="related_action">editor</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">editor</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="view_server">
                         <property name="visible">True</property>
-                        <property name="related_action">server</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">server</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="view_tests">
                         <property name="visible">True</property>
-                        <property name="related_action">tests</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">tests</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImageMenuItem" id="view_browser">
                         <property name="visible">True</property>
-                        <property name="related_action">browser</property>
                         <property name="use_action_appearance">True</property>
+                        <property name="related_action">browser</property>
+                        <property name="use_underline">True</property>
                         <property name="use_stock">True</property>
                       </object>
                     </child>
@@ -239,8 +245,8 @@
             <child>
               <object class="GtkToolButton" id="save_project_button">
                 <property name="visible">True</property>
-                <property name="related_action">save_project</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">save_project</property>
                 <property name="label" translatable="yes">Save</property>
                 <property name="use_underline">True</property>
               </object>
@@ -250,7 +256,17 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSeparatorToolItem" id="project_actions_separator">
+              <object class="GtkSeparatorToolItem" id="perspective_aligner_separator">
+                <property name="visible">True</property>
+                <property name="draw">False</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSeparatorToolItem" id="perspective_separator">
                 <property name="visible">True</property>
               </object>
               <packing>
@@ -261,8 +277,8 @@
             <child>
               <object class="GtkToggleToolButton" id="editor_button">
                 <property name="visible">True</property>
-                <property name="related_action">editor</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">editor</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -273,8 +289,8 @@
             <child>
               <object class="GtkToggleToolButton" id="start_server_button">
                 <property name="visible">True</property>
-                <property name="related_action">server</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">server</property>
                 <property name="label" translatable="yes">Server</property>
                 <property name="use_underline">True</property>
               </object>
@@ -286,8 +302,8 @@
             <child>
               <object class="GtkToggleToolButton" id="autotest_button">
                 <property name="visible">True</property>
-                <property name="related_action">tests</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">tests</property>
                 <property name="label" translatable="yes">Autotest</property>
                 <property name="use_underline">True</property>
               </object>
@@ -299,8 +315,8 @@
             <child>
               <object class="GtkToggleToolButton" id="browser_button">
                 <property name="visible">True</property>
-                <property name="related_action">browser</property>
                 <property name="use_action_appearance">True</property>
+                <property name="related_action">browser</property>
                 <property name="label" translatable="yes">Browser</property>
                 <property name="use_underline">True</property>
               </object>

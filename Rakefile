@@ -7,11 +7,15 @@ begin
     gem.name = "sozdat"
     gem.summary = %Q{Rails IDE}
     gem.description = %Q{Rails IDE from Tokak Studio}
-    gem.email = "rotuka@tokak.ru"
-    gem.homepage = "http://github.com/rotuka/sozdat"
-    gem.authors = ["Alexander Semyonov"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_development_dependency "yard", ">= 0"
+    gem.email = 'rotuka@tokak.ru'
+    gem.homepage = 'http://github.com/rotuka/sozdat'
+    gem.authors = ['Alexander Semyonov']
+    gem.add_development_dependency 'shoulda', '>= 0'
+    gem.add_development_dependency 'yard', '>= 0'
+    gem.add_dependency 'activesupport', '2.3.4'
+    gem.add_dependency 'activerecord', '2.3.4'
+    gem.add_dependency 'ZenTest', '4.1.4'
+    gem.add_dependency 'autotest-rails', '4.1.0'
     gem.bindir = 'bin'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
