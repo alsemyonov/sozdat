@@ -1,9 +1,9 @@
 class MainController < Rgtk::Controller::Base
   module Perspective
-    BROWSER = 1
-    EDITOR = 2
+    BROWSER = 4
+    EDITOR = 1
     TESTS = 3
-    SERVER = 4
+    SERVER = 2
   end
 
   def initialize
