@@ -138,6 +138,43 @@
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">_View</property>
                 <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu1">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="view_editor">
+                        <property name="visible">True</property>
+                        <property name="related_action">editor</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="view_server">
+                        <property name="visible">True</property>
+                        <property name="related_action">server</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="view_tests">
+                        <property name="visible">True</property>
+                        <property name="related_action">tests</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="view_browser">
+                        <property name="visible">True</property>
+                        <property name="related_action">browser</property>
+                        <property name="use_action_appearance">True</property>
+                        <property name="use_stock">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -234,11 +271,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="browser_button">
+              <object class="GtkToggleToolButton" id="start_server_button">
                 <property name="visible">True</property>
-                <property name="related_action">browser</property>
+                <property name="related_action">server</property>
                 <property name="use_action_appearance">True</property>
-                <property name="label" translatable="yes">Browser</property>
+                <property name="label" translatable="yes">Server</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -260,11 +297,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleToolButton" id="start_server_button">
+              <object class="GtkToggleToolButton" id="browser_button">
                 <property name="visible">True</property>
-                <property name="related_action">server</property>
+                <property name="related_action">browser</property>
                 <property name="use_action_appearance">True</property>
-                <property name="label" translatable="yes">Server</property>
+                <property name="label" translatable="yes">Browser</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -333,8 +370,10 @@
     <signal name="activate" handler="on_application_quit"/>
   </object>
   <object class="GtkRadioAction" id="editor">
-    <property name="label">Editor</property>
+    <property name="label">Project editor (Vim)</property>
+    <property name="short_label">Editor</property>
     <property name="icon_name">accessories-text-editor</property>
+    <property name="is_important">True</property>
     <property name="draw_as_radio">True</property>
     <property name="value">1</property>
     <signal name="changed" handler="on_action_changed"/>

@@ -14,7 +14,6 @@ class MainController < Rgtk::Controller::Base
       iter = projects_liststore.append
       iter[0] = project.name
       iter[1] = project
-      p project
     end
     project_selector_combobox.model = projects_liststore
     renderer = Gtk::CellRendererText.new
@@ -62,9 +61,9 @@ protected
     end
   end
 
-  changed :action do |*args|
+  changed :action do |radio, group|
     if @project
-      current_perspective = args.first.current_value
+      current_perspective = group.current_value
       case current_perspective
       when Perspective::BROWSER
         server.open(@project) unless @project.server_started?
