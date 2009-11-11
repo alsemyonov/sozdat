@@ -7,6 +7,7 @@ $LOAD_PATH.unshift(vendored_rgtk) if File.exists?(vendored_rgtk)
 require 'rgtk'
 require 'webkit'
 require 'vte'
+require 'activerecord'
 
 Rgtk.root = File.expand_path("#{File.dirname(__FILE__)}/..") unless defined?(RGTK_ROOT)
 
