@@ -214,7 +214,7 @@
           <object class="GtkToolbar" id="main_toolbar">
             <property name="visible">True</property>
             <child>
-              <object class="GtkToolButton" id="create_project_button">
+              <object class="GtkToolButton" id="project_create_button">
                 <property name="visible">True</property>
                 <property name="related_action">create_project</property>
                 <property name="label" translatable="yes">Create project</property>
@@ -243,11 +243,24 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="save_project_button">
+              <object class="GtkToolButton" id="project_save_button">
                 <property name="visible">True</property>
-                <property name="use_action_appearance">True</property>
                 <property name="related_action">save_project</property>
+                <property name="use_action_appearance">True</property>
                 <property name="label" translatable="yes">Save</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="homogeneous">True</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="project_properties_button">
+                <property name="visible">True</property>
+                <property name="related_action">project_properties</property>
+                <property name="use_action_appearance">True</property>
+                <property name="label" translatable="yes">toolbutton1</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -277,8 +290,8 @@
             <child>
               <object class="GtkToggleToolButton" id="editor_button">
                 <property name="visible">True</property>
-                <property name="use_action_appearance">True</property>
                 <property name="related_action">editor</property>
+                <property name="use_action_appearance">True</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -289,8 +302,8 @@
             <child>
               <object class="GtkToggleToolButton" id="start_server_button">
                 <property name="visible">True</property>
-                <property name="use_action_appearance">True</property>
                 <property name="related_action">server</property>
+                <property name="use_action_appearance">True</property>
                 <property name="label" translatable="yes">Server</property>
                 <property name="use_underline">True</property>
               </object>
@@ -302,8 +315,8 @@
             <child>
               <object class="GtkToggleToolButton" id="autotest_button">
                 <property name="visible">True</property>
-                <property name="use_action_appearance">True</property>
                 <property name="related_action">tests</property>
+                <property name="use_action_appearance">True</property>
                 <property name="label" translatable="yes">Autotest</property>
                 <property name="use_underline">True</property>
               </object>
@@ -315,8 +328,8 @@
             <child>
               <object class="GtkToggleToolButton" id="browser_button">
                 <property name="visible">True</property>
-                <property name="use_action_appearance">True</property>
                 <property name="related_action">browser</property>
+                <property name="use_action_appearance">True</property>
                 <property name="label" translatable="yes">Browser</property>
                 <property name="use_underline">True</property>
               </object>
@@ -335,6 +348,7 @@
           <object class="GtkNotebook" id="project_notebook">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="scrollable">True</property>
           </object>
           <packing>
             <property name="position">2</property>
@@ -417,5 +431,9 @@
     <property name="value">4</property>
     <property name="group">editor</property>
     <signal name="changed" handler="on_action_changed"/>
+  </object>
+  <object class="GtkAction" id="project_properties">
+    <property name="stock_id">gtk-preferences</property>
+    <signal name="activate" handler="on_project_properties_activate"/>
   </object>
 </interface>

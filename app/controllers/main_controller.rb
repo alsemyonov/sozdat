@@ -9,6 +9,10 @@ class MainController < Rgtk::Controller::Base
   def initialize
     super
     @tabs = {}
+    load_projects_list
+  end
+
+  def load_projects_list
     projects_liststore = Gtk::ListStore.new(String, Project)
     Project.find_each do |project|
       iter = projects_liststore.append
@@ -56,6 +60,11 @@ protected
     end
     activate :save
     activate :save_as
+    activate :properties do
+      project_dialog.show(@project) do |*args|
+        p args
+      end
+    end
     changed :selector_combobox do
       open_project(project_selector_combobox.active_iter[1])
     end
@@ -129,5 +138,12 @@ protected
     end
     dialog.destroy
     project_directory
+  end
+
+  def project_dialog
+    unless @project_dialog
+      @project_dialog = ProjectController.new(self)
+    end
+    @project_dialog
   end
 end

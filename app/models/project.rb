@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  before_validation :autoset_name
   validates_presence_of :name, :path
 
   attr_writer :port
@@ -21,5 +22,10 @@ class Project < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+protected
+  def autoset_name
+    self.name ||= File.basename(self.path)
   end
 end
